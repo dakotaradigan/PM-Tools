@@ -1,0 +1,20 @@
+{
+  "name": "solution-manager-toolkit",
+  "version": "0.1.0",
+  "description": "AI-assisted solution management tools for user research synthesis, requirements generation, and workshop preparation. 3 commands, 3 skills, 2 agents.",
+  "author": {
+    "name": "Dakota Radigan",
+    "url": "https://github.com/dakotaradigan"
+  },
+  "repository": "https://github.com/dakotaradigan/solution-manager-toolkit",
+  "license": "MIT",
+  "keywords": [
+    "solution-management",
+    "user-research",
+    "requirements",
+    "product-management",
+    "workshop",
+    "design-thinking",
+    "market-data"
+  ]
+}

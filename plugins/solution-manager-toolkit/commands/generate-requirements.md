@@ -1,0 +1,53 @@
+---
+name: solution-work:generate-requirements
+description: Generate user stories, acceptance criteria, and NFRs from synthesized problem statements
+allowed-tools: Read, Glob, Grep, Write, Bash
+user-invocable: true
+---
+
+# Generate Requirements
+
+Transform synthesized research into structured requirements artifacts.
+
+## Steps
+
+1. **Locate synthesis outputs** — Look for `synthesis/problem-statements.md` and `synthesis/personas.md` in the current directory or ask the user for the path.
+
+2. **Review problem statements** — Read the problem statements and confirm scope with the user. Ask which problems to generate requirements for (all, or a subset).
+
+3. **Generate for each problem statement:**
+
+   **User Stories** (format):
+   ```
+   As a [persona], I want to [action] so that [outcome].
+   ```
+   - Generate 3-8 user stories per problem statement
+   - Map each story to the persona(s) it serves
+   - Assign a priority: Must Have / Should Have / Could Have / Won't Have (MoSCoW)
+
+   **Acceptance Criteria** (format):
+   ```
+   Given [context], when [action], then [expected result].
+   ```
+   - 2-5 acceptance criteria per user story
+   - Include both happy path and edge cases
+
+   **Non-Functional Requirements**:
+   - Performance (latency, throughput)
+   - Data quality (accuracy, freshness, completeness)
+   - Security & compliance (audit trail, access control)
+   - Scalability
+   - Only include NFRs that are evidenced by the research
+
+4. **Write outputs:**
+   - `requirements/user-stories.md` — All stories grouped by problem statement
+   - `requirements/acceptance-criteria.md` — Detailed AC for each story
+   - `requirements/nfrs.md` — Non-functional requirements with traceability to research
+
+5. **Dependency map** — Identify which stories depend on others and note the suggested implementation order.
+
+## Important
+
+- Requirements must trace back to research findings. Include `[Source: Problem Statement X]` references.
+- Do not generate requirements for problems that weren't surfaced in the research.
+- Flag assumptions explicitly — if a requirement assumes something not stated in the research, call it out.
