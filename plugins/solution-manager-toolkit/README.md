@@ -2,7 +2,7 @@
 
 Turn vague product problems into spec'd, reviewed, ready-to-build solution artifacts — without leaving your terminal.
 
-This is a Claude Code plugin for investment management teams. You type slash commands, it walks you through structured workflows and writes the output as markdown files you can version, share, and build from. Leverage multiple commands (16), agents (4) and skills (10) to quickly find solutions.
+This is a Claude Code plugin for investment management teams. You type slash commands, it walks you through structured workflows and writes the output as markdown files you can version, share, and build from. Backed by 16 commands, 4 agents, and 10 skills that handle everything from messy problem intake to ready-to-build artifacts.
 
 ## Quick Start
 
