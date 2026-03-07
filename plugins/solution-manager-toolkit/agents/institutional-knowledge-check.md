@@ -21,6 +21,8 @@ The agent receives the synthesized outputs:
 
 And optionally, the raw research files for cross-reference.
 
+Also load `references/team-context.md` for team-specific stakeholders, systems, and org context if available.
+
 ## Review Process
 
 ### 1. Stakeholder Coverage Check

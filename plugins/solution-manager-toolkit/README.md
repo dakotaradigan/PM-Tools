@@ -1,108 +1,117 @@
 # Solution Manager Toolkit
 
-A Claude Code plugin for AI-assisted solution management — accelerating user research synthesis, requirements generation, and workshop preparation.
+Turn vague product problems into spec'd, reviewed, ready-to-build solution artifacts — without leaving your terminal.
 
-## What This Does
+This is a Claude Code plugin for investment management teams. You type slash commands, it walks you through structured workflows and writes the output as markdown files you can version, share, and build from.
 
-This plugin automates the repetitive parts of the solution management workflow while keeping human judgment at the center:
-
-| Command | What It Does |
-|---------|-------------|
-| `/solution-work:synthesize-research` | Takes raw interview notes, survey responses, and workshop transcripts → outputs structured problem statements, persona cards, and theme matrices |
-| `/solution-work:generate-requirements` | Takes synthesized problem statements → outputs user stories, acceptance criteria, and NFRs |
-| `/solution-work:workshop-prep` | Takes a workshop goal and participant list → outputs timed agenda, discussion prompts, and pre-read materials |
-
-Type `/solution-work` in Claude Code to see all available commands.
-
-## Components
-
-- **3 Commands** — User-invocable slash commands for each workflow step
-- **3 Skills** — Domain knowledge for research synthesis, requirements, and workshop design
-- **2 Agents** — Theme extractor for parallel processing + institutional knowledge reviewer for gap analysis
-
-## Installation
-
-### 1. Add the marketplace (one time)
+## Quick Start
 
 ```bash
+# Install (one time)
 claude plugin marketplace add https://github.com/dakotaradigan/PM-Tools
-```
-
-### 2. Install the plugin
-
-```bash
 claude plugin install solution-work@pm-tools
-```
-
-### 3. Enable the plugin
-
-```bash
 claude plugin enable solution-work@pm-tools
+# Restart Claude Code
 ```
 
-### 4. Restart Claude Code
+Then run:
 
-Type `/solution-work` to see all available commands.
+```
+/solution-work:start
+```
 
-### Uninstall
+It asks what you're working on, picks the right workflow, and walks you through each step. That's the only command you need to remember.
+
+If you already know what you want, you can jump straight to any command:
+
+```
+/solution-work:brainstorm       # "We have a problem but haven't scoped it yet"
+/solution-work:discover         # "We have a codebase — what's in it?"
+/solution-work:synthesize-research  # "We have interview notes / survey data"
+/solution-work:help             # "Show me everything"
+```
+
+Typing `/solution-work:` shows all available commands in a dropdown.
+
+## What You Get
+
+You describe a problem. The toolkit walks you through defining it:
+
+```
+/solution-work:brainstorm           → brainstorm/topic-summary.md
+/solution-work:synthesize-research  → synthesis/themes, personas, problem statements
+/solution-work:discover             → discovery/entities, APIs, dependencies
+/solution-work:generate-requirements → requirements/user stories + acceptance criteria
+/solution-work:datamodel            → data-model/canonical entities + governance
+/solution-work:apicontract          → api-contracts/endpoints + schemas
+/solution-work:eventspec            → event-specs/schemas + delivery guarantees
+/solution-work:nfr                  → requirements/NFRs with measurable targets
+/solution-work:review               → review/completeness scores + cross-reference gaps
+/solution-work:architecture         → architecture/ADRs with tradeoff matrices
+/solution-work:piplan               → pi-planning/features, WSJF, dependencies, risks
+/solution-work:workshop-prep        → workshop materials + facilitation guides
+/solution-work:status               → progress summary across all artifacts
+/solution-work:help                 → command reference
+```
+
+Every output is a markdown file. Nothing is locked in a tool — you own the artifacts.
+
+## The Workflow
+
+You don't have to run everything. Start wherever you are:
+
+```
+brainstorm → synthesize-research → discover → datamodel → apicontract
+→ eventspec → nfr → review → architecture → piplan
+```
+
+Most teams start with `brainstorm` or `discover`, run 3-4 commands, then `review` to find gaps.
+
+## Team Setup
+
+The toolkit ships with investment management domain knowledge (instruments, regulations, failure modes). To get the most out of it, fill in your team's specific context.
+
+### Reference files
+
+| File | What It Contains | Action |
+|------|-----------------|--------|
+| `references/domain-knowledge-base.md` | Generic checklists, NFR format, review patterns | Keep as-is (extend if needed, don't remove items) |
+| `references/domain-knowledge.md` | Investment management domain knowledge (instruments, regulations, strategies) | Review and extend for your firm's specifics |
+| `references/team-context.md` | **Your team's systems, custodians, org structure, codebase conventions** | **Fill in for your team** |
+
+### How to set up
+
+1. **Fill in `references/team-context.md`** — This is a blank form with tables for your OMS, custodians, team ownership, codebase conventions, vendor integrations, and stakeholders. Commands like `discover`, `piplan`, `architecture`, and `review` reference it for team-specific context.
+
+2. **Review `references/domain-knowledge.md`** — Ships with investment management content (direct indexing, TLH, overlay strategies, SMA/UMA, custodian recon). Extend it with your firm's specific instruments, regulations, or failure modes if needed.
+
+### What happens if team-context.md is empty?
+
+Commands still work — they just won't have your team's specific systems and org context. Domain knowledge (instruments, regulations, NFR defaults) still applies. The more you fill in, the more grounded the outputs.
+
+## Uninstall
 
 ```bash
 claude plugin uninstall solution-work@pm-tools
 ```
 
-## Usage
+## Try with Sample Data
 
-### Synthesize Research
-
-Place your research files (markdown) in a directory, then:
-
-```
-/solution-work:synthesize-research
+```bash
+git clone https://github.com/dakotaradigan/PM-Tools.git
+cd PM-Tools/sample-data
+# Open Claude Code and run /solution-work:synthesize-research
 ```
 
-The command will find your files, extract themes in parallel, and generate:
-- `synthesis/research-summary.md`
-- `synthesis/personas.md`
-- `synthesis/problem-statements.md`
-- `synthesis/theme-matrix.md`
+## Optional: MCP Server Integrations
 
-### Generate Requirements
-
-After synthesis, run:
-
-```
-/solution-work:generate-requirements
-```
-
-Generates:
-- `requirements/user-stories.md`
-- `requirements/acceptance-criteria.md`
-- `requirements/nfrs.md`
-
-### Workshop Prep
-
-```
-/solution-work:workshop-prep
-```
-
-Generates:
-- `workshop/agenda.md`
-- `workshop/discussion-prompts.md`
-- `workshop/pre-read.md`
-
-## MCP Server Integrations (Optional)
-
-This plugin works standalone with local files. For pushing artifacts to external tools, configure these MCP servers:
+The plugin works standalone with local markdown files. To push outputs to external tools, configure these MCP servers:
 
 | Tool | MCP Server | What It Enables |
 |------|-----------|----------------|
-| Miro | [miroapp/miro-ai](https://github.com/miroapp/miro-ai) | Push workshop structures, persona boards, theme clusters to Miro |
-| Confluence | [atlassian/atlassian-mcp-server](https://github.com/atlassian/atlassian-mcp-server) | Publish requirements docs, research summaries to Confluence |
 | Jira | [atlassian/atlassian-mcp-server](https://github.com/atlassian/atlassian-mcp-server) | Create epics and stories from generated requirements |
-
-## Sample Data
-
-See `sample-data/` for synthetic market data platform research that demonstrates the full workflow.
+| Confluence | [atlassian/atlassian-mcp-server](https://github.com/atlassian/atlassian-mcp-server) | Publish research summaries and requirements docs |
+| Miro | [miroapp/miro-ai](https://github.com/miroapp/miro-ai) | Push persona boards, theme clusters, and workshop structures |
 
 ## License
 
