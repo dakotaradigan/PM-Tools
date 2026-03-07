@@ -1,5 +1,5 @@
 {
-  "name": "pm-tools",
+  "name": "solution-manager-plugin",
   "owner": {
     "name": "Dakota Radigan",
     "url": "https://github.com/dakotaradigan"
@@ -17,7 +17,7 @@
         "name": "Dakota Radigan",
         "url": "https://github.com/dakotaradigan"
       },
-      "homepage": "https://github.com/dakotaradigan/PM-Tools",
+      "homepage": "https://github.com/dakotaradigan/Solution-Manager-Plugin",
       "tags": ["solution-management", "user-research", "requirements", "product-management", "workshop"],
       "source": "./plugins/solution-manager-toolkit"
     }

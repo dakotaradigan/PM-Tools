@@ -8,9 +8,9 @@ This is a Claude Code plugin for investment management teams. You type slash com
 
 ```bash
 # Install (one time)
-claude plugin marketplace add https://github.com/dakotaradigan/PM-Tools
-claude plugin install solution-work@pm-tools
-claude plugin enable solution-work@pm-tools
+claude plugin marketplace add https://github.com/dakotaradigan/Solution-Manager-Plugin
+claude plugin install solution-work@solution-manager-plugin
+claude plugin enable solution-work@solution-manager-plugin
 # Restart Claude Code
 ```
 
@@ -92,22 +92,22 @@ Commands still work — they just won't have your team's specific systems and or
 ## Updating
 
 ```bash
-claude plugin marketplace update pm-tools
-claude plugin update solution-work@pm-tools
+claude plugin marketplace update solution-manager-plugin
+claude plugin update solution-work@solution-manager-plugin
 # Restart Claude Code
 ```
 
 ## Uninstall
 
 ```bash
-claude plugin uninstall solution-work@pm-tools
+claude plugin uninstall solution-work@solution-manager-plugin
 ```
 
 ## Try with Sample Data
 
 ```bash
-git clone https://github.com/dakotaradigan/PM-Tools.git
-cd PM-Tools/sample-data
+git clone https://github.com/dakotaradigan/Solution-Manager-Plugin.git
+cd Solution-Manager-Plugin/sample-data
 # Open Claude Code and run /solution-work:synthesize-research
 ```
 

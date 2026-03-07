@@ -104,9 +104,9 @@ agents/          (4 agent files)
 ## Installation
 
 ```bash
-claude plugin marketplace add https://github.com/dakotaradigan/PM-Tools
-claude plugin install solution-work@pm-tools
-claude plugin enable solution-work@pm-tools
+claude plugin marketplace add https://github.com/dakotaradigan/Solution-Manager-Plugin
+claude plugin install solution-work@solution-manager-plugin
+claude plugin enable solution-work@solution-manager-plugin
 ```
 
 Restart Claude Code after installing.
